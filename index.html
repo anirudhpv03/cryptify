@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cryptify</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <header>
+      <h1>🔐 Cryptify</h1>
+      <p>Encrypt & decrypt messages securely in your browser</p>
+      <span class="badge">Client-side • Secure • AES-256-GCM</span>
+    </header>
+
+    <div class="controls">
+      <div class="control-row">
+        <div class="control-group">
+          <label>Algorithm</label>
+          <select id="algorithm">
+            <option value="caesar">Caesar Cipher ⚙️</option>
+            <option value="vigenere">Vigenère Cipher 🔑</option>
+            <option value="base64">Base64 🧩</option>
+            <option value="rot13">ROT13 🔄</option>
+            <option value="aes">AES-256-GCM 🔒</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label>Key / Password</label>
+          <div class="password-field">
+            <input id="key" type="password" placeholder="Shift / Keyword / Password">
+            <i id="toggleKey" class="fa-solid fa-eye"></i>
+          </div>
+          <small class="hint">🔐 Password never leaves your browser</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="panel">
+        <h3>Plaintext</h3>
+        <textarea id="plaintext" placeholder="Enter message..."></textarea>
+        <div class="buttons">
+          <button class="primary" onclick="encrypt()">Encrypt <i class="fa-solid fa-lock"></i></button>
+          <button class="secondary" onclick="clearAll()">Clear <i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Ciphertext</h3>
+        <textarea id="ciphertext" placeholder="Encrypted output..." ></textarea>
+        <div class="buttons">
+          <button class="secondary" onclick="copyText()">Copy <i class="fa-solid fa-copy"></i></button>
+          <button class="primary" onclick="decrypt()">Decrypt <i class="fa-solid fa-unlock"></i></button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="info">
+      <strong>Algorithms supported</strong><br>
+      • Caesar – simple letter shift<br>
+      • Vigenère – keyword cipher<br>
+      • Base64 – encoding only<br>
+      • ROT13 – fixed Caesar shift<br>
+      • AES-256-GCM – Password authenticated encryption
+    </div>
+
+    <footer>
+      Built with Web Crypto API • No data leaves your browser
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
